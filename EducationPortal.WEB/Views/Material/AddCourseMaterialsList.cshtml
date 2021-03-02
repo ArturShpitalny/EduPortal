@@ -1,0 +1,76 @@
+﻿@using EducationPortal.WEB.Models.ViewModel;
+@using EducationPortal.Core.Models.Entities;
+@using EducationPortal.Core.Models.DTO;
+@model EntityIndexModel<EntityItemModel<Material>>
+
+@{
+    ViewBag.Title = "AddCourseMaterials";
+    Layout = "~/Views/Shared/_AdminMainPageLayout.cshtml";
+}
+
+<div class="col-md-12 offset-md-0">
+    <div class="row justify-content-center my-3">
+        <div class="col-12">
+            <div class="col-11 mx-auto mx-lg-auto my-2">
+                <div class="row justify-content-center justify-content-md-start h-100">
+                    <h5 class="text-center text-md-right text-uppercase">Добавление материала в курс</h5>
+                </div>
+            </div>
+
+            <div class="col-11 mx-auto mx-lg-auto my-2">
+                <div class="row justify-content-center justify-content-md-start h-100">
+                    <a class="btn btn-outline-danger" title="Назад к списку материалов курса" href="@Url.Action("AdminPanelMaterialCourse", "MaterialCourse", new { courseId = Model.Index })">
+                        <i class="fa fa-undo fa-2x" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="page" class="col-12">
+            @foreach (var item in Model.Entity.Entities)
+            {
+                <div id="@item.Id" class="border rounded bg-white col-11 mx-auto mx-lg-auto my-2 min-height-100px">
+                    <div class="row d-flex justify-content-between min-height-100px h-100">
+                        <div class="col-12 col-lg-1 mx-auto mx-lg-0 my-3 my-lg-auto">
+                            <div class="row justify-content-center">
+                                <h5 title="ID">@Html.DisplayFor(modelItem => item.Id)</h5>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-7 mx-auto mx-lg-auto my-2 my-lg-auto text-center text-lg-left">
+                            <h5 title="Название">@Html.DisplayFor(modelItem => item.MaterialName)</h5>
+                        </div>
+                        <div class="col-12 col-lg-4 mx-auto mx-lg-auto my-3 my-lg-auto right">
+                            <div class="row justify-content-center">
+                                <a class="btn btn-outline-warning" title="Редактировать материал" href="@Url.Action("EditMaterial", "Material", new { materialId = item.Id })">
+                                    <i class="fa fa-pencil fa-lg"></i>
+                                </a>
+                                <button materialId="@item.Id" courseId="@Model.Index" title="Добавить материал в курс" class="add-material-btn btn btn-outline-success mb-0 mx-1">
+                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="col-11 mx-auto mx-lg-auto my-2">
+                <div class="row justify-content-center justify-content-md-start h-100">
+                    <div class="btn-group btn-group-toggle">
+                        @for (int i = 1; i <= Model.Entity.Pagination.TotalPages; i++)
+                        {
+                            if (i == Model.Entity.Pagination.PageNumber)
+                            {
+                                <a class="btn btn-secondary active text-light" href="@Url.Action("AddCourseMaterialsList", "Material", new { courseId = Model.Index, page = i })">@i</a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-secondary text-light" href="@Url.Action("AddCourseMaterialsList", "Material", new { courseId = Model.Index, page = i })">@i</a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

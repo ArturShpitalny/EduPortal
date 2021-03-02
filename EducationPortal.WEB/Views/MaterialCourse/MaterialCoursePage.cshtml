@@ -1,0 +1,81 @@
+﻿@using EducationPortal.Core.Models.Entities;
+@model EducationPortal.Core.Models.DTO.MaterialCoursePageModel
+
+@{
+    ViewBag.Title = "MaterialCoursePage";
+    Layout = "~/Views/Shared/_MainPageLayout.cshtml";
+}
+
+<div class="col-md-12 offset-md-0">
+    <div class="row justify-content-center my-3">
+        <div class="@(Model.IsComplete == true? "border border-success" : "border") rounded bg-white col-10 mx-3 mx-lg-auto my-2 min-height-100px">
+            <div class="row justify-content-center">
+                <div class="col-10 mt-3">
+                    <h5 class="text-center text-uppercase">@Model.Material.MaterialName @Html.Raw(Model.IsComplete == true ? "<i class=\"fa fa-check text-success\" aria-hidden=\"true\"></i>" : "")</h5>
+                    <p class="text-justify">
+                        @Model.Material.MaterialDescription
+                    </p>
+
+                    @if (Model.Material is Article)
+                    {
+                        <a class="nav-link" href="@Model.Material.MaterialResource">Перейти к статье</a>
+                    }
+                    else if (Model.Material is Book)
+                    {
+                        <div class="video-container">
+                            <iframe width="560" height="315" src="@Model.Material.MaterialResource"></iframe>
+                        </div>
+                    }
+                    else if (Model.Material is Video)
+                    {
+                        <div class="video-container">
+                            <iframe width="560" height="315" src="@Model.Material.MaterialResource" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                    }
+
+                    <p class="text-justify">
+                        @foreach(string info in Model.Material.GetAdditionalInformation())
+                        {
+                            @info<br/>
+                        }
+                    </p>
+                </div>
+                <div class="col-10 my-3">
+                    <div class="row justify-content-center">
+                        @if (Model.NextPage - 1 > 1)
+                        {
+                            <a class="btn btn-outline-secondary mx-1" title="Предыдущий" href="@Url.Action("MaterialCoursePage", "MaterialCourse", new { courseId = Model.CourseId, materialId = Model.Material.Id, page = Model.NextPage - 2 })">
+                                <i class="fa fa-step-backward" aria-hidden="true"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-primary mx-1" title="В начало" href="@Url.Action("CourseFirstPage", "Course", new { courseId = Model.CourseId, materialId = Model.Material.Id })">
+                                <i class="fa fa-fast-backward" aria-hidden="true"></i>
+                            </a>
+                        }
+
+                        <div class="border bg-light rounded font-italic mx-1 my-auto p-1">@(Model.NextPage - 1) / @(Model.PageCount)</div>
+
+                        @if (Model.NextPage > Model.PageCount)
+                        {
+                            <a class="btn btn-outline-danger mx-1" title="Завершить" href="@Url.Action("MaterialCoursePageEnd", "MaterialCourse", new { courseId = Model.CourseId, materialId = Model.Material.Id })">
+                                <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-success mx-1" title="Следующий" href="@Url.Action("MaterialCoursePage", "MaterialCourse", new { courseId = Model.CourseId, materialId = Model.Material.Id, page = Model.NextPage })">
+                                <i class="fa fa-step-forward" aria-hidden="true"></i>
+                            </a>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

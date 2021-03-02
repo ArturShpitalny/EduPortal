@@ -1,0 +1,35 @@
+﻿@model EducationPortal.Core.Models.DTO.AboutUserModel
+
+@{
+    ViewBag.Title = "UserInfo";
+    Layout = "~/Views/Shared/_MainPageLayout.cshtml";
+}
+
+<div class="col-md-12 offset-md-0">
+    <div class="row justify-content-center my-3">
+        <div class="border rounded bg-white col-10 mx-3 mx-lg-auto my-2 min-height-100px">
+            <div class="row justify-content-center">
+                <div class="col-10 my-3">
+                    <h5 class="text-center text-uppercase"><i class="fa fa-user" aria-hidden="true"></i>&nbsp; @Model.UserModel.Email</h5>
+                    <p class="text-justify">
+                        <i class="fa fa-birthday-cake" aria-hidden="true"></i>&nbsp; @Model.UserModel.Birthdate.ToShortDateString()
+                    </p>
+
+                    <h5 class="text-center text-uppercase">Мои умения:</h5>
+                    <ul>
+                        @foreach (var i in Model.Skills)
+                        {
+                            <li>
+                                <h6><strong>@i.SkillName</strong></h6>
+                            </li>
+                        }
+                    </ul>
+
+                    <p class="text-justify">
+                        <i class="fa fa-star" aria-hidden="true"></i>&nbsp; Итого баллов: @Model.TotalUserSkill.Rating
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

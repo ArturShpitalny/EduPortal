@@ -1,0 +1,69 @@
+﻿@if (User.IsInRole("Admin"))
+{
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("UserInfo", "Account")">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            &nbsp; Обо мне
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("MainPageUserCourse", "UserCourse", new { page = 1 })">
+            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+            &nbsp; Мои курсы
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("MainAdminPanelCourses", "Course", new { page = 1 })">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            &nbsp; Admin
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("ui/index", "swagger")">
+            <i class="fa fa-code" aria-hidden="true"></i>
+            &nbsp; Swagger
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Logout", "Account")">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            &nbsp; Sign out
+        </a>
+    </li>
+}
+else if (User.IsInRole("User"))
+{
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("UserInfo", "Account")">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            &nbsp; Обо мне
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("MainPageUserCourse", "UserCourse", new { page = 1 })">
+            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+            &nbsp; Мои курсы
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Logout", "Account")">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            &nbsp; Sign out
+        </a>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Login", "Account", new { page = 1 })">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            &nbsp; Sign in
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Register", "Account")">
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+            &nbsp; Sign up
+        </a>
+    </li>
+}

@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "WindowAfterRegistration";
+    Layout = "~/Views/Shared/_MainPageLayout.cshtml";
+}
+
+<div class="col-md-12 offset-md-0">
+    <div class="row justify-content-center my-3">
+        <div class="border rounded bg-white col-10 col-md-7 mx-3 mx-lg-auto my-2 min-height-100px">
+            <div class="row justify-content-center">
+                <div class="col-12 my-3">
+                    <h5 class="text-center text-uppercase">Спасибо что зарегистрировались!</h5>
+                    <ul class="navbar-nav text-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("MainPageCourses", "Course")">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                &nbsp; На главную
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Login", "Account")">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                &nbsp; Войти
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

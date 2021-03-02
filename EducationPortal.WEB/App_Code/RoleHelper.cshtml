@@ -1,0 +1,16 @@
+﻿@helper RoleSelector(int validId, IEnumerable<EducationPortal.Core.Models.Auth.Role> items)
+{
+    <select name="roleId" class="form-control">
+        @foreach (var c in items)
+        {
+            if (validId == c.Id)
+            {
+                <option selected value="@c.Id">@c.RoleName</option>
+            }
+            else
+            {
+                <option value="@c.Id">@c.RoleName</option>
+            }
+        }
+    </select>
+}

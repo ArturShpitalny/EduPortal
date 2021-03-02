@@ -1,0 +1,6 @@
+﻿.message {
+    box-shadow: -1px 6px 4px rgba(0, 0, 0, 0), 0 10px 10px rgba(0, 0, 0, 0.17);
+    color: #FAFAFA;
+    background-color: rgb(135, 134, 134);
+    border-radius: 15px;
+}

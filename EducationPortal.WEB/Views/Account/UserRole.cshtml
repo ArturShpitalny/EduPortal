@@ -1,0 +1,5 @@
+﻿@using EducationPortal.WEB.Models.ViewModel;
+@using EducationPortal.Core.Models.Auth;
+@model EntityIndexModel<IEnumerable<Role>>
+
+@RoleHelper.RoleSelector(Model.Index, Model.Entity)

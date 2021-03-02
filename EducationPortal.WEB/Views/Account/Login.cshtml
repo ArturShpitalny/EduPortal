@@ -1,0 +1,38 @@
+﻿@model EducationPortal.WEB.Models.ViewModel.LoginFormModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_MainPageLayout.cshtml";
+}
+
+<div class="col-12">
+    <div class="row justify-content-center">
+        <div class="col-10 col-sm-8 col-lg-5 border border-info rounded-lg bg-light my-3">
+            <div class="row justify-content-center">
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "w-75", @role = "form" }))
+                {
+                    <h5 class="text-center text-uppercase mt-2">Sign in</h5>
+                    @Html.AntiForgeryToken()
+
+                    <div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Email)
+                            @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Password)
+                            @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="d-flex justify-content-center my-2">
+                            <button type="submit" class="btn btn-outline-primary">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

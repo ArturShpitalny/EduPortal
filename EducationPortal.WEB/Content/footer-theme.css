@@ -1,0 +1,17 @@
+﻿@font-face {
+    font-family: ZillaSlab;
+    src: url(../Fonts/ZillaSlab.otf);
+}
+
+.footer-text {
+    font-family: ZillaSlab;
+    color: rgb(164, 164, 164);
+}
+
+    .footer-text:visited {
+        color: rgb(164, 164, 164); /* Цвет посещённой ссылки */
+    }
+
+    .footer-text:hover {
+        color: rgb(133, 133, 133); /* Цвет ссылки при наведении на нее курсора мыши */
+    }

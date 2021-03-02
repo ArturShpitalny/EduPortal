@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КурсоВод - ваш личный проводник в учёбе</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/material-container.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="bg-light-gray">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-lg-3 navbar-container bg-light">
+                <nav class="navbar navbar-expand-md navbar-light">
+                    <a class="navbar-brand" href="@Url.Action("MainPageCourses", "Course")">
+                        <img src="@Url.Content("~/Images/System/CoursesIcon.png")" height="30" class="d-inline-block align-top" alt="">
+                        <b class="header-style">КурсоВод</b>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <!-- Вертикальное меню -->
+                        <ul class="navbar-nav">
+                            <li>
+                                @using (Html.BeginForm("MainPageCourses", "Course", FormMethod.Get, new { @enctype = "application/x-www-form-urlencoded", @class = "search-form" }))
+                                {
+                                    <input type="hidden" name="page" value="1" />
+                                    <input class="txb-search" type="text" name="search" placeholder="Искать здесь...">
+                                    <button class="btn-search" type="submit">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </button>
+                                }
+                            </li>
+                            <li>
+                                @Html.Action("Menu", "Account")
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="col-md-8 col-lg-9 content-container">
+                <div class="row mb-5">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <div id="message"></div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center my-3">
+            <a class="nav-link footer-text" href="#link-2">:We in Facebook:</a>
+            <a class="nav-link footer-text" href="#">:KursoVod:</a>
+            <a class="nav-link footer-text" href="#link-2">:We in Instagram:</a>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/scripts/add-course.js")
+    @Scripts.Render("~/scripts/remove-course.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

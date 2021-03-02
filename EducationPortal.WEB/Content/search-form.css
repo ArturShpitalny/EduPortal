@@ -1,0 +1,30 @@
+﻿/* * {box-sizing: border-box;} */
+.search-form {
+    float: left;
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    background: #F8F9FA;
+    border-bottom: 4px solid #17b7fb;
+}
+
+.txb-search, .btn-search {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.txb-search {
+    width: 100%;
+    height: 42px;
+    padding-left: 15px;
+}
+
+.btn-search {
+    height: 42px;
+    width: 42px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}

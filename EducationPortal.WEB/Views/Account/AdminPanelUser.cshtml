@@ -1,0 +1,67 @@
+﻿@using EducationPortal.Core.Models.DTO;
+@using EducationPortal.Core.Models.Auth;
+@model EntityItemModel<User>
+
+@{
+    ViewBag.Title = "AdminPanelUser";
+    Layout = "~/Views/Shared/_AdminMainPageLayout.cshtml";
+}
+
+<div class="col-md-12 offset-md-0">
+    <div class="row justify-content-center my-3">
+        <div class="col-12">
+            <div class="col-11 mx-auto mx-lg-auto my-2">
+                <div class="row justify-content-center justify-content-md-start h-100">
+                    <h5 class="text-center text-md-right text-uppercase">Редактор пользователей</h5>
+                </div>
+            </div>
+        </div>
+
+        <div id="page" class="col-12">
+            @foreach (var item in Model.Entities)
+            {
+                <div id="@item.Id" class="border rounded bg-white col-11 mx-auto mx-lg-auto my-2 min-height-100px">
+                    <div class="row d-flex justify-content-between min-height-100px h-100">
+                        <div class="col-12 col-lg-1 mx-auto mx-lg-0 my-3 my-lg-auto">
+                            <div class="row justify-content-center">
+                                <h5 title="ID">@Html.DisplayFor(modelItem => item.Id)</h5>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-7 mx-auto mx-lg-auto my-2 my-lg-auto text-center text-lg-left">
+                            <h5 title="Логин">@Html.DisplayFor(modelItem => item.UserEmail)</h5>
+                        </div>
+                        <div class="col-12 col-lg-4 mx-auto mx-lg-auto my-3 my-lg-auto right">
+                            <div class="row justify-content-center">
+                                <a class="btn btn-outline-warning" title="Редактировать пользователя" href="@Url.Action("EditUser", "Account", new { id = item.Id })">
+                                    <i class="fa fa-pencil fa-lg"></i>
+                                </a>
+                                <button elementId="@item.Id" title="Удалить пользователя" class="delete-user-btn btn btn-danger mb-0 mx-1">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="col-11 mx-auto mx-lg-auto my-2">
+                <div class="row justify-content-center justify-content-md-start h-100">
+                    <div class="btn-group btn-group-toggle">
+                        @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
+                        {
+                            if (i == Model.Pagination.PageNumber)
+                            {
+                                <a class="btn btn-secondary active text-light" href="@Url.Action("AdminPanelUser", "Account", new { page = i })">@i</a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-secondary text-light" href="@Url.Action("AdminPanelUser", "Account", new { page = i })">@i</a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

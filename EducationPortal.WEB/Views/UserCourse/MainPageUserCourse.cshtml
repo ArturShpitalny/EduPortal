@@ -1,0 +1,79 @@
+﻿@using EducationPortal.Core.Models.DTO;
+@model EntityItemModel<CourseModel>
+
+@{
+    ViewBag.Title = "MainPageUserCourse";
+    Layout = "~/Views/Shared/_MainPageLayout.cshtml";
+}
+
+<div class="col-md-12 offset-md-0">
+    <div class="row justify-content-center my-3">
+        <div class="col-12">
+            <div class="col-11 mx-auto mx-lg-auto my-2">
+                <div class="row justify-content-center justify-content-md-start h-100">
+                    <h5 class="text-center text-md-right text-uppercase">Ваши курсы</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div id="page" class="row justify-content-center">
+                @foreach (var c in Model.Entities)
+                {
+                    <div id="@c.Id" class="@(c.IsComplete == true? "border border-success" : "border") bg-light rounded col-xs-10 col-lg-5 mx-3 mx-lg-auto my-2 min-height-100px">
+                        <div class="row d-flex justify-content-between min-height-100px h-100">
+                            <div class="col-3 mx-auto mx-md-0 my-3 my-sm-auto">
+                                <div class="row justify-content-center">
+                                    @if (c.CourseImagePath == "" || c.CourseImagePath == null)
+                                    {
+                                        <img productid="@c.Id" class="block-img-succes" src="@Url.Content("~/Images/System/no-photo.png")" width="60" height="60">
+                                    }
+                                    else
+                                    {
+                                        <img productid="@c.Id" class="block-img-succes" src="@Url.Content(c.CourseImagePath)" width="60" height="60">
+                                    }
+
+                                    @if (c.IsComplete == true)
+                                    {
+                                        <i class="fa fa-check text-success fa-4x block-text-succes" aria-hidden="true"></i>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-10 col-sm-6 mx-auto mx-sm-auto my-2 my-sm-auto mx-md-0 text-center text-sm-left">
+                                <a class="text-dark" href="@Url.Action("CourseFirstPage", "Course", new { courseId = c.Id })">
+                                    @c.CourseName
+                                </a>
+                            </div>
+                            <div class="col-5 col-sm-2 mx-auto mx-md-2 my-3 my-sm-auto right">
+                                <div class="row justify-content-center">
+                                    <button elementId="@c.Id" class="remove-course-btn btn-danger btn-circle">
+                                        <i class="fa fa-minus fa-lg"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="col-11 mx-auto mx-lg-auto my-2">
+                    <div class="row justify-content-center justify-content-md-start h-100">
+                        <div class="btn-group btn-group-toggle">
+                            @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
+                            {
+                                if (i == Model.Pagination.PageNumber)
+                                {
+                                    <a class="btn btn-secondary active text-light" href="@Url.Action("MainPageUserCourse", "UserCourse", new { page = i })">@i</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-secondary text-light" href="@Url.Action("MainPageUserCourse", "UserCourse", new { page = i })">@i</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

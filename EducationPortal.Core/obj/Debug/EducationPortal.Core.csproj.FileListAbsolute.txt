@@ -1,0 +1,6 @@
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.Core\bin\Debug\EducationPortal.Core.dll
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.Core\bin\Debug\EducationPortal.Core.pdb
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.Core\obj\Debug\EducationPortal.Core.csprojAssemblyReference.cache
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.Core\obj\Debug\EducationPortal.Core.csproj.CoreCompileInputs.cache
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.Core\obj\Debug\EducationPortal.Core.dll
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.Core\obj\Debug\EducationPortal.Core.pdb

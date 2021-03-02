@@ -1,0 +1,73 @@
+﻿@model EducationPortal.WEB.Models.ViewModel.VideoModel
+
+@{
+    ViewBag.Title = "EditVideo";
+    Layout = "~/Views/Shared/_AdminMainPageLayout.cshtml";
+}
+
+<div class="col-12">
+    <div class="row justify-content-center">
+        <div class="col-10  border rounded-lg bg-light my-3">
+            <div class="row justify-content-center">
+                @using (Html.BeginForm("EditVideo", "Material", FormMethod.Post, new { enctype = "multipart/form-data", @class = "w-75", @role = "form" }))
+                {
+                    <h5 class="text-center text-uppercase mt-2">Редактор видео</h5>
+                    @Html.AntiForgeryToken()
+                    <div>
+                        @Html.HiddenFor(x => x.Id)
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MaterialName)
+                            @Html.EditorFor(x => x.MaterialName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.MaterialName, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MaterialDescription)
+                            @Html.EditorFor(x => x.MaterialDescription, new { htmlAttributes = new { @class = "form-control", rows = 3 } })
+                            @Html.ValidationMessageFor(x => x.MaterialDescription, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MaterialResource)
+                            @Html.EditorFor(x => x.MaterialResource, new { htmlAttributes = new { @class = "form-control", rows = 3 } })
+                            @Html.ValidationMessageFor(x => x.MaterialResource, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.VideoLength)
+                            @Html.EditorFor(x => x.VideoLength, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.VideoLength, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.VideoResolution)
+                            <select name="VideoResolution" class="form-control">
+                                @foreach (var c in new string[] { "144p", "240p", "360p", "480p", "720p", "1080p", "4k" })
+                                {
+                                    if (Model.VideoResolution == c)
+                                    {
+                                        <option selected value="@c">@c</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@c">@c</option>
+                                    }
+                                }
+                            </select>
+                            @Html.ValidationMessageFor(x => x.VideoResolution, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.SkillId)
+                            @Html.Action("MaterialSkill", "Skill", new { selectedId = Model.SkillId })
+                            @Html.ValidationMessageFor(x => x.SkillId, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="d-flex justify-content-center my-2">
+                            <button type="submit" class="btn btn-primary mx-1">
+                                <i class="fa fa-floppy-o"></i>
+                            </button>
+                            <a class="btn btn-outline-danger mx-1" href="@Url.Action("AdminPanelMaterial", "Material", new { id = -1 })">
+                                <i class="fa fa-ban"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

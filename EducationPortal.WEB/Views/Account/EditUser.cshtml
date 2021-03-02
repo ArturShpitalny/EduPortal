@@ -1,0 +1,58 @@
+﻿@model EducationPortal.WEB.Models.ViewModel.UserFormModel
+
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Views/Shared/_AdminMainPageLayout.cshtml";
+}
+
+<div class="col-12">
+    <div class="row justify-content-center">
+        <div class="col-10  border rounded-lg bg-light my-3">
+            <div class="row justify-content-center">
+                @using (Html.BeginForm("EditUser", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "w-75", @role = "form" }))
+                {
+                    <h5 class="text-center text-uppercase mt-2">Редактор пользователя</h5>
+                    @Html.AntiForgeryToken()
+
+                    <div>
+                        @Html.HiddenFor(x => x.Id)
+
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Email)
+                            @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Password)
+                            @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.PasswordConfirm)
+                            @Html.EditorFor(x => x.PasswordConfirm, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.PasswordConfirm, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Birthdate)
+                            @Html.EditorFor(x => x.Birthdate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.Birthdate, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.RoleId)
+                            @Html.Action("UserRole", "Account", new { selectedId = Model.RoleId })
+                            @Html.ValidationMessageFor(x => x.RoleId, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="d-flex justify-content-center my-2">
+                            <button type="submit" class="btn btn-primary mx-1">
+                                <i class="fa fa-floppy-o"></i>
+                            </button>
+                            <a class="btn btn-outline-danger mx-1" href="@Url.Action("AdminPanelUser", "Account", new { id = -1 })">
+                                <i class="fa fa-ban"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

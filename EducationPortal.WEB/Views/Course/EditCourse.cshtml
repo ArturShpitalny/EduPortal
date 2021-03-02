@@ -1,0 +1,61 @@
+﻿@model EducationPortal.WEB.Models.ViewModel.CourseModel
+
+@{
+    ViewBag.Title = "EditCourse";
+    Layout = "~/Views/Shared/_AdminMainPageLayout.cshtml";
+}
+
+<div class="col-12">
+    <div class="row justify-content-center">
+        <div class="col-10  border rounded-lg bg-light my-3">
+            <div class="row justify-content-center">
+                @using (Html.BeginForm("EditCourse", "Course", FormMethod.Post, new { enctype = "multipart/form-data", @class = "w-75", @role = "form" }))
+                {
+                    <h5 class="text-center text-uppercase mt-2">Редактор курса</h5>
+                    @Html.AntiForgeryToken()
+
+                    <div>
+                        @Html.HiddenFor(x => x.Id)
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.CourseName)
+                            @Html.EditorFor(x => x.CourseName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.CourseName, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.CourseDescription)
+                            @Html.EditorFor(x => x.CourseDescription, new { htmlAttributes = new { @class = "form-control", rows = 3 } })
+                            @Html.ValidationMessageFor(x => x.CourseDescription, null, new { @class = "text-danger help-block" })
+                        </div>
+                        <div class="col-12 my-2">
+                            <div class="row d-flex justify-content-around">
+                                <div class="col-3">
+                                    @if (Model.CourseImagePath == "" || Model.CourseImagePath == null)
+                                    {
+                                        <img productid="@Model.Id" src="@Url.Content("~/Images/System/no-photo.png")" width="60" height="60" class="d-inline-block align-top">
+                                    }
+                                    else
+                                    {
+                                        <img productid="@Model.Id" src="@Url.Content(Model.CourseImagePath)" width="60" height="60" class="d-inline-block align-top">
+                                    }
+                                </div>
+                                <div class="col-8">
+                                    @Html.LabelFor(x => x.ImageFile)
+                                    @Html.TextBoxFor(x => x.ImageFile, new { type = "file", accept = "image/*", @class = "form-control-file" })
+                                    @Html.ValidationMessageFor(x => x.CourseImagePath, null, new { @class = "text-danger help-block" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center my-2">
+                            <button type="submit" class="btn btn-primary mx-1">
+                                <i class="fa fa-floppy-o"></i>
+                            </button>
+                            <a class="btn btn-outline-danger mx-1" href="@Url.Action("MainAdminPanelCourses", "Course", new { id = -1 })">
+                                <i class="fa fa-ban"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>КурсоВод - панель администратора</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="bg-light-gray">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-lg-3 navbar-container bg-light">
+                <nav class="navbar navbar-expand-md navbar-light">
+                    <a class="navbar-brand" href="@Url.Action("MainAdminPanelCourses", "Course")">
+                        <img src="@Url.Content("~/Images/System/CoursesIcon.png")" height="30" class="d-inline-block align-top" alt="">
+                        <b class="header-style">КурсоВод Admin</b>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <!-- Вертикальное меню -->
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("MainPageCourses", "Course")">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    &nbsp; На Главную
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("MainAdminPanelCourses", "Course")">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    &nbsp; Курсы
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("AdminPanelMaterial", "Material")">
+                                    <i class="fa fa-font" aria-hidden="true"></i>
+                                    &nbsp; Материалы
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("AdminPanelSkill", "Skill")">
+                                    <i class="fa fa-magic" aria-hidden="true"></i>
+                                    &nbsp; Умения
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("AdminPanelUser", "Account")">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    &nbsp; Пользователи
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="col-md-8 col-lg-9 content-container">
+                <div class="row mb-5">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="message"></div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center my-3">
+            <a class="nav-link footer-text" href="#link-2">:We in Facebook:</a>
+            <a class="nav-link footer-text" href="#">:KursoVod:</a>
+            <a class="nav-link footer-text" href="#link-2">:We in Instagram:</a>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/scripts/delete-course.js")
+    @Scripts.Render("~/scripts/delete-material.js")
+    @Scripts.Render("~/scripts/delete-skill.js")
+    @Scripts.Render("~/scripts/delete-user.js")
+    @Scripts.Render("~/scripts/remove-material.js");
+    @Scripts.Render("~/scripts/add-material.js");
+    @RenderSection("scripts", required: false)
+</body>
+</html>

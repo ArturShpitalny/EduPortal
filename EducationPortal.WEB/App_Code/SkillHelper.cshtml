@@ -1,0 +1,16 @@
+﻿@helper SkillSelector(int validId, IEnumerable<EducationPortal.Core.Models.Entities.Skill> items)
+{
+    <select name="skillId" class="form-control">
+        @foreach (var c in items)
+        {
+            if (validId == c.Id)
+            {
+                <option selected value="@c.Id">@c.SkillName</option>
+            }
+            else
+            {
+                <option value="@c.Id">@c.SkillName</option>
+            }
+        }
+    </select>
+}

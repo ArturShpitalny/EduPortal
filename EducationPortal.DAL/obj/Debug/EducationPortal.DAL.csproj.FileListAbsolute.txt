@@ -1,0 +1,16 @@
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\bin\Debug\EducationPortal.DAL.dll.config
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\bin\Debug\EducationPortal.DAL.dll
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\bin\Debug\EducationPortal.DAL.pdb
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\bin\Debug\EducationPortal.Core.dll
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\bin\Debug\EntityFramework.dll
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\bin\Debug\EducationPortal.Core.pdb
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\bin\Debug\EntityFramework.xml
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\obj\Debug\EducationPortal.DAL.csprojAssemblyReference.cache
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\obj\Debug\EducationPortal.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\obj\Debug\EducationPortal.DAL.csproj.CopyComplete
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\obj\Debug\EducationPortal.DAL.dll
+C:\Users\Arthur\Downloads\FinishedProject\MainProject\EducationPortal.DAL\obj\Debug\EducationPortal.DAL.pdb

@@ -1,0 +1,56 @@
+﻿@model EducationPortal.Core.Models.DTO.CourseInformationModel
+
+@{
+    ViewBag.Title = "MainPageAboutCourses";
+    Layout = "~/Views/Shared/_MainPageLayout.cshtml";
+}
+
+<div class="col-md-12 offset-md-0">
+    <div class="row justify-content-center my-3">
+        <div class="border rounded bg-white col-10 mx-3 mx-lg-auto my-2 min-height-100px">
+            <div class="row justify-content-center">
+                <div class="col-10 my-3">
+                    <div class="row justify-content-center">
+                        @if (Model.Course.CourseImagePath == "" || Model.Course.CourseImagePath == null)
+                        {
+                            <img productid="@Model.Course.Id" src="@Url.Content("~/Images/System/no-photo.png")" width="60" height="60" class="d-inline-block align-top">
+                        }
+                        else
+                        {
+                            <img productid="@Model.Course.Id" src="@Url.Content(Model.Course.CourseImagePath)" width="60" height="60" class="d-inline-block align-top">
+                        }
+                    </div>
+                </div>
+                <div class="col-10">
+                    <h5 class="text-center text-uppercase">@Model.Course.CourseName</h5>
+                    <p class="text-justify">
+                        @Model.Course.CourseDescription
+                    </p>
+
+                    <h5 class="text-center text-uppercase">Содержимое курса:</h5>
+                    <ul>
+                        @if (Model.Materials != null)
+                        {
+                            foreach (var i in Model.Materials)
+                            {
+                                <li>
+                                    <h6><strong>@i.MaterialName</strong></h6>
+                                    <p><em>@i.MaterialDescription</em></p>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="col-10 my-3">
+                    <div class="row justify-content-center">
+                        <button elementId="@Model.Course.Id" class="add-course-btn btn-primary btn-circle">
+                            <i class="fa fa-plus fa-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

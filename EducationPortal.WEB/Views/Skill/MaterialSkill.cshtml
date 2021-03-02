@@ -1,0 +1,5 @@
+﻿@using EducationPortal.WEB.Models.ViewModel;
+@using EducationPortal.Core.Models.Entities;
+@model EntityIndexModel<IEnumerable<Skill>>
+
+@SkillHelper.SkillSelector(Model.Index, Model.Entity)

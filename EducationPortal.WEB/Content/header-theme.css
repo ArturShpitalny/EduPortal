@@ -1,0 +1,10 @@
+﻿@font-face {
+    font-family: ComicHelvetic;
+    src: url(../Fonts/ComicHelvetic.otf);
+}
+
+.header-style {
+    font-family: ComicHelvetic;
+    color: #5E5C74;
+    text-shadow: 1px 1px 1px rgba(88, 88, 88, 0.632), 0 0 0 black;
+}
